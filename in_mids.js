@@ -1,5 +1,5 @@
 /**
- * Middlewares about dealing with Incoming Messages
+ * Middlewares about dealing with Incoming Messages (request) from browser
  *
  * Copyright (C) 2014 guanglin.an (lucky315.an@gmail.com)
  * 
@@ -33,11 +33,13 @@ var IncomingMiddlewares = exports = module.exports;
     var options = mkRequestOptions(req, opt);
     var proxyReq = http.request(options);
 
+    req.pipe(proxyReq);
+    
     proxyReq.on('response', function(proxyRes){
       //TODO:
       
       arrOutMids.forEach(function(func){
-        func.call(null, proxyRes);
+        func(req, res, proxyRes, proxy);
       });
       
       proxyRes.pipe(res);

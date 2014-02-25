@@ -1,5 +1,5 @@
-var ReverseProxy = require('./reverse_proxy');
 var logger = require('./logger.js');
+var ReverseProxy = require('./reverse_proxy');
 
 var PORT = 3000;
 

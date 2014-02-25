@@ -1,4 +1,4 @@
-reverse_proxy
+Reverse Proxy
 =============
 
-A simple reverse proxy implemented via node.js
+A simple reverse proxy implemented by node.js

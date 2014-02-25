@@ -35,13 +35,13 @@ util.inherits(ReverseProxy, EventEmitter);
     function proxy_cb(opt){
       var arrInMids = Object.keys(in_mids).map(function(func_name){
         return in_mids[func_name];
-      })
+      });
       
       return function(req, res){
         arrInMids.forEach(function(func){
-          func.call(null, req, res, opt, _this);
+          func(req, res, opt, _this);
         });
-      }
+      };
     };
     
     this.server = http.createServer(proxy_cb(this.options));
